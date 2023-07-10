@@ -1,13 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.text-left {
+  text-align: left;
+  margin: 10px;
+}
+
+.fa-plus {
+  color: green;
+  margin: 5px;
+  font-weight: bold;
+  font-size: small;
+}
+.fa-minus {
+  color: red;
+  margin: 5px;
+  font-weight: bold;
+  font-size: small;
+}
+.fa-trash {
+  color: red;
+}
+.text-right {
+  text-align: right;
+}
+
+input {
+  margin-top: 10px !important;
+  box-shadow: none !important;
+}
+.adminfunctions {
+  padding: 10px;
+  background-color: rgb(1, 1, 77);
+}
+
+.adminfunctions li {
+  list-style-type: none !important;
+  display: inline !important;
+  color: white !important;
+}
+.adminfunctions li a {
+  color: white !important;
+  padding: 20px;
+}
+td,
+th,
+tr {
+  text-align: left;
 }

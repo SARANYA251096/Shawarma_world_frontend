@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap";
+import Navbar from "./components/Navbar";
+import Homescreen from "./screens/Homescreen";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CartScreen from "./screens/CartScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import LoginScreen from "./screens/LoginScreen";
+import OrdersScreen from "./screens/OrdersScreen";
+import AdminScreen from "./screens/AdminScreen";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Homescreen />} />
+          <Route path="/cart" element={<CartScreen />} />
+          <Route path="/register" element={<RegisterScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
+          <Route path="/orders" element={<OrdersScreen />} />
+          <Route path="/admin" element={<AdminScreen/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

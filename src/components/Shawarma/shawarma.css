@@ -1,0 +1,23 @@
+h1{
+    font-size: 20px !important;
+}
+img{
+    height: 200px;
+    width: 200px;
+}
+.flex-container {
+    display: flex !important;
+}
+.pz{
+   font-size: medium !important;
+
+}
+.btn{
+    background-color: red !important;
+    color: white !important;
+    font-size: small;
+}
+select{
+    box-shadow: none !important;
+    border-color: black !important;
+}
