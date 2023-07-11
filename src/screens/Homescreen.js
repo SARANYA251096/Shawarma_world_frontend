@@ -14,7 +14,7 @@ export default function Homescreen() {
 
   useEffect(() => {
     dispatch(getAllShawarmas());
-  }, []);
+  }, [ ]);
   return (
     <div>
       <Filter/>
