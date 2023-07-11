@@ -13,9 +13,9 @@ img{
 
 }
 .btn{
-    background-color: red !important;
-    color: white !important;
-    font-size: small;
+  background-color: brown !important;
+  color: blanchedalmond !important ;
+  font-size: small;
 }
 select{
     box-shadow: none !important;

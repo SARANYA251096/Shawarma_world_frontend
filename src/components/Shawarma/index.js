@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../actions/cartActions";
 
 export default function Index({ shawarma }) {
-  const [varient, setVarient] = useState("small");
+  const [varient, setVarient] = useState("roll");
   const [quantity, setQuantity] = useState(1);
   const [show, setShow] = useState(false);
 

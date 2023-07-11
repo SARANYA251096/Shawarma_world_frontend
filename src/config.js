@@ -1,3 +1,3 @@
 export const config = {
-  api: "http://localhost:7000",
+  api: "https://shawarma-backend.onrender.com/",
 };
