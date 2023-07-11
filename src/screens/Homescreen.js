@@ -23,7 +23,7 @@ export default function Homescreen() {
         <Loading/>
         ) : error ? (
           <Error error="Something went wrong"/>
-        ) : (
+        ) : ( shawarmas?
           shawarmas.map((shawarma) => {
             return (
               <div className="col-md-3 m-3">
@@ -33,6 +33,7 @@ export default function Homescreen() {
               </div>
             )
           })
+              : console.log("shawarma is empty", shawarmas)
         )}
       </div>
     </div>
