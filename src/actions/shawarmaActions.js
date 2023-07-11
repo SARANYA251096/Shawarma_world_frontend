@@ -5,7 +5,7 @@ export const getAllShawarmas = () =>async dispatch => {
   dispatch({ type: "GET_SHAWARMAS_REQUEST" });
 
   try {
-    const response =await axios.get("/api/shawarmas/getallshawarmas");
+    const response =await axios.get(config.api + "/api/shawarmas/getallshawarmas");
     dispatch({ type: "GET_SHAWARMAS_SUCCESS",payload : response.data });
     console.log(response);
   } catch (error) {
