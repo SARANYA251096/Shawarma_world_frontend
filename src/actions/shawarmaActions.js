@@ -7,7 +7,7 @@ export const getAllShawarmas = () =>async dispatch => {
   try {
     const response =await axios.get(config.api + "/api/shawarmas/getallshawarmas");
     dispatch({ type: "GET_SHAWARMAS_SUCCESS",payload : response.data });
-    console.log(response);
+    // console.log(response);
   } catch (error) {
     dispatch({ type: "GET_SHAWARMAS_FAILED",payload :error });
     console.log(error);
@@ -39,7 +39,7 @@ export const filterShawarmas = (searchkey, category) => async (dispatch) => {
     );
     if (category !== "all") {
       filteredShawarmas = response.data.filter(
-        (shawarma) => shawarma.category.toLowerCase() == category
+        (shawarma) => shawarma.category.toLowerCase() === category
       );
     }
     dispatch({ type: "GET_SHAWARMAS_SUCCESS", payload: filteredShawarmas });

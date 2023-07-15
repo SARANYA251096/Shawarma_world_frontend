@@ -29,25 +29,25 @@ export default function Index() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav navbar-nav-right">
               {currentUser ? (
-                <div class="dropdown mt-2">
+                <div className="dropdown mt-2">
                   <a
                     style={{color:"black"}}
-                    class="dropdown-toggle"
+                    className="dropdown-toggle"
                     href="#"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
                     {currentUser.name}
                   </a>
-                  <ul class="dropdown-menu">
+                  <ul className="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="/orders">
+                      <a className="dropdown-item" href="/orders">
                         Orders
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#" onClick={()=>{dispatch(logoutUser())}}>
-                        <li>Logout</li>
+                      <a className="dropdown-item" href="#" onClick={()=>{dispatch(logoutUser())}}>
+                        Logout
                       </a>
                     </li>
                   </ul>

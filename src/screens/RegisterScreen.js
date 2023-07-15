@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../actions/userAction";
+import { registerUser, resetRegisterUser } from "../actions/userAction";
 import Loading from "../components/Loading";
 import Success from "../components/Success";
 import Error from "../components/Error";
@@ -10,33 +10,50 @@ export default function RegisterScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
-  const registerState = useSelector(state => state.registerUserReducer)
-  const {error,loading,success}=registerState
 
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
 
-  function register() {
-    if (password!==cpassword) {
-      alert("Password is not matched!")
+  const registerState = useSelector((state) => state.registerUserReducer);
+  const { loading, error, success } = registerState;
+
+  const resetForm = () => {
+    setName("");
+    setEmail("");
+    setPassword("");
+    setCpassword("");
+  };
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetRegisterUser()); // Reset the registration state when unmounting the component
+    };
+  }, [dispatch]);
+
+  const register = () => {
+    if (password !== cpassword) {
+      alert("Password is not matched!");
     } else {
       const user = {
         name,
         email,
-        password
-      }
-      console.log(user)
-      dispatch(registerUser(user))
+        password,
+      };
+      dispatch(registerUser(user));
     }
-  }
+  };
 
   return (
     <div>
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5 text-left shadow-lg p-3 mb-5 bg-body rounded">
-
-          {loading && (<Loading />)}
-          {success && (<Success success="User Registered Successfully" />)}
-          {error && (<Error error="User already registered"/>)}
+          {loading && <Loading />}
+          {success && (
+            <Success
+              success="User Registered Successfully"
+              resetForm={resetForm}
+            />
+          )}
+          {error && <Error error={error} />}
 
           <h2 className="text-center m-2">Register</h2>
           <div>
@@ -61,7 +78,7 @@ export default function RegisterScreen() {
               required
             />
             <input
-              type="text"
+              type="password"
               placeholder="password"
               className="form-control"
               value={password}
@@ -71,7 +88,7 @@ export default function RegisterScreen() {
               required
             />
             <input
-              type="text"
+              type="password"
               placeholder="confirm password"
               className="form-control"
               value={cpassword}

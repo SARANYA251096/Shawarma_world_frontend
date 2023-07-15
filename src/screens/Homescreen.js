@@ -6,7 +6,6 @@ import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Filter from "../components/Filter";
 
-
 export default function Homescreen() {
   const dispatch = useDispatch();
   const shawarmasState = useSelector((state) => state.getAllShawarmasReducer);
@@ -14,26 +13,26 @@ export default function Homescreen() {
 
   useEffect(() => {
     dispatch(getAllShawarmas());
-  }, [ ]);
+  }, []);
+
   return (
     <div>
-      <Filter/>
+      <Filter />
       <div className="row justify-content-center">
         {loading ? (
-        <Loading/>
+          <Loading key="loading" />
         ) : error ? (
-          <Error error="Something went wrong"/>
-        ) : ( shawarmas?
-          shawarmas.map((shawarma) => {
-            return (
-              <div className="col-md-3 m-3">
-                <div>
-                  <Shawarma shawarma={shawarma} />
-                </div>
+          <Error key="error" error="Something went wrong" />
+        ) : shawarmas ? (
+          shawarmas.map((shawarma) => (
+            <div key={shawarma.id} className="col-md-3 m-3">
+              <div>
+                <Shawarma shawarma={shawarma} />
               </div>
-            )
-          })
-              : console.log("shawarma is empty", shawarmas)
+            </div>
+          ))
+        ) : (
+          console.log("shawarma is empty", shawarmas)
         )}
       </div>
     </div>
