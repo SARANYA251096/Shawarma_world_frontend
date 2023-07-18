@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Addshawarma from "./Addshawarma";
 import Editshawarma from "./Editshawarma";
@@ -11,16 +11,13 @@ import Userslist from "./Userslist";
 export default function AdminScreen() {
   const userstate = useSelector((state) => state.loginUserReducer);
   const { currentUser } = userstate;
-  const dispatch = useDispatch();
 
-useEffect(() => {
-  if (!currentUser || !currentUser.isAdmin) {
-    window.location.href = "/";
-  }
-}, [currentUser]);
+  useEffect(() => {
+    if (currentUser.isAdmin === true) {
+      window.location.href = "/";
+    }
+  }, []);
 console.log(currentUser)
-
-
   return (
     <div>
       <div className="row justify-content-center p-3">
@@ -29,30 +26,33 @@ console.log(currentUser)
 
           <ul className="adminfunctions">
             <li>
-              <Link to="/admin/userslist">Users List</Link>
+              <Link to={"/admin/userslist"}>Users List</Link>
             </li>
             <li>
-              <Link to="/admin/shawarmaslist">Shawarmas List</Link>
+              <Link to={"/admin/shawarmaslist"}>Shawarmas List</Link>
             </li>
             <li>
-              <Link to="/admin/addshawarma">Add Shawarma</Link>
+              <Link to={"/admin/addshawarma"}>Add Shawarma</Link>
             </li>
             <li>
-              <Link to="/admin/orderslist">Orders List</Link>
+              <Link to={"/admin/orderslist"}>Orders List</Link>
             </li>
           </ul>
-
-          <Routes>
-            <Route path="/admin" element={<Userslist />} />
-            <Route path="/admin/userslist" element={<Userslist />} />
-            <Route path="/admin/orderslist" element={<Orderslist />} />
-            <Route path="/admin/shawarmaslist" element={<Shawarmaslist />} />
-            <Route path="/admin/addshawarma" element={<Addshawarma />} />
+          <Switch>
+            <Route path="/admin" component={Userslist} exact />
+            <Route path="/admin/userslist" component={Userslist} exact />
+            <Route path="/admin/orderslist" component={Orderslist} exact />
+            <Route
+              path="/admin/shawarmaslist"
+              component={Shawarmaslist}
+              exact
+            />
+            <Route path="/admin/addshawarma" component={Addshawarma} exact />
             <Route
               path="/admin/editshawarma/:shawarmaid"
-              element={<Editshawarma />}
+              component={Editshawarma}
             />
-          </Routes>
+          </Switch>
         </div>
       </div>
     </div>

@@ -31,10 +31,12 @@ export default function Index() {
               {currentUser ? (
                 <div className="dropdown mt-2">
                   <a
-                    style={{color:"black"}}
+                    style={{ color: "black" }}
                     className="dropdown-toggle"
-                    href="#"
-                    data-bs-toggle="dropdown"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
                     aria-expanded="false"
                   >
                     {currentUser.name}
@@ -46,7 +48,13 @@ export default function Index() {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#" onClick={()=>{dispatch(logoutUser())}}>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={() => {
+                          dispatch(logoutUser());
+                        }}
+                      >
                         Logout
                       </a>
                     </li>

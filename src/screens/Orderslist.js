@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deliverOrder, getAllOrders } from "../actions/orderActions";
 import Error from "../components/Error";
@@ -12,7 +12,7 @@ export default function Orderslist() {
 
   useEffect(() => {
     dispatch(getAllOrders());
-  }, []);
+  },[]);
 
   return (
     <div>

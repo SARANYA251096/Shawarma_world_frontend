@@ -24,15 +24,15 @@ export default function Homescreen() {
         ) : error ? (
           <Error key="error" error="Something went wrong" />
         ) : shawarmas ? (
-          shawarmas.map((shawarma) => (
-            <div key={shawarma.id} className="col-md-3 m-3">
+          shawarmas.map((shawarma, index) => (
+            <div key={shawarma.id || index} className="col-md-3 m-3">
               <div>
                 <Shawarma shawarma={shawarma} />
               </div>
             </div>
           ))
         ) : (
-          console.log("shawarma is empty", shawarmas)
+          <div>shawarma is empty {shawarmas}</div>
         )}
       </div>
     </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./shawarma.css";
-// import shawarmas from '../../shawarmas';
 import { Button, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../actions/cartActions";
@@ -13,21 +12,19 @@ export default function Index({ shawarma }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   function addtocart() {
-    dispatch(addToCart(shawarma,quantity,varient))
+    dispatch(addToCart(shawarma, quantity, varient));
   }
   return (
-    <div
-      className="shadow-lg p-3 mb-5 bg-white rounded"
-    >
+    <div className="shadow-lg p-3 mb-5 bg-white rounded">
       <div onClick={handleShow}>
         <h1>{shawarma.name}</h1>
-        <img src={shawarma.image} className="img-fluid" />
+        <img src={shawarma.image} className="img-fluid" alt={shawarma.name} />
       </div>
       <div className="flex-container">
         <div className="w-100 m-2">
-          <p>Varients</p>
+          <p>Variants</p>
           <select
             className="form-control"
             value={varient}
@@ -35,9 +32,11 @@ export default function Index({ shawarma }) {
               setVarient(e.target.value);
             }}
           >
-            {shawarma.varients.map((varient) => {
-              return <option value={varient}>{varient}</option>;
-            })}
+            {shawarma.varients.map((varient, index) => (
+              <option key={varient} value={varient}>
+                {varient}
+              </option>
+            ))}
           </select>
         </div>
         <div className="w-100 m-2">
@@ -49,9 +48,11 @@ export default function Index({ shawarma }) {
               setQuantity(e.target.value);
             }}
           >
-            {[...Array(10).keys()].map((x, i) => {
-              return <option value={i + 1}>{i + 1}</option>;
-            })}
+            {[...Array(10).keys()].map((x, index) => (
+              <option key={x + 1} value={x + 1}>
+                {x + 1}
+              </option>
+            ))}
           </select>
         </div>
       </div>
@@ -62,7 +63,9 @@ export default function Index({ shawarma }) {
           </h1>
         </div>
         <div className="m-1 w-100">
-          <button className="btn" onClick={addtocart}>ADD TO CART</button>
+          <button className="btn" onClick={addtocart}>
+            ADD TO CART
+          </button>
         </div>
       </div>
 
@@ -72,8 +75,13 @@ export default function Index({ shawarma }) {
         </Modal.Header>
 
         <Modal.Body>
-          <img src={shawarma.image} className="img-fluid" style={{ height: "200px",width:'400px'}} />
-          <p className="mt-3">{shawarma.description }</p>
+          <img
+            src={shawarma.image}
+            className="img-fluid"
+            alt={shawarma.name}
+            style={{ height: "200px", width: "400px" }}
+          />
+          <p className="mt-3">{shawarma.description}</p>
         </Modal.Body>
 
         <Modal.Footer>

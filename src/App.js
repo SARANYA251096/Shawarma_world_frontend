@@ -3,7 +3,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import Navbar from "./components/Navbar";
 import Homescreen from "./screens/Homescreen";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import CartScreen from "./screens/CartScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import LoginScreen from "./screens/LoginScreen";
@@ -15,14 +15,14 @@ function App() {
     <div className="App">
       <Navbar />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Homescreen />} />
-          <Route path="/cart" element={<CartScreen />} />
-          <Route path="/register" element={<RegisterScreen />} />
-          <Route path="/login" element={<LoginScreen />} />
-          <Route path="/orders" element={<OrdersScreen />} />
-          <Route path="/admin" element={<AdminScreen/>} />
-        </Routes>
+        
+          <Route path="/" exact component={Homescreen } />
+          <Route path="/cart" exact component={CartScreen } />
+          <Route path="/register" exact component={RegisterScreen } />
+          <Route path="/login" exact component={LoginScreen } />
+          <Route path="/orders" exact component={OrdersScreen } />
+          <Route path="/admin" component={AdminScreen } />
+        
       </BrowserRouter>
     </div>
   );

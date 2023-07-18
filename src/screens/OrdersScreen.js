@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserOrders } from "../actions/orderActions";
 import Loading from "../components/Loading";
-import Success from "../components/Success";
+// import Success from "../components/Success";
 import Error from "../components/Error";
 
 export default function OrdersScreen() {

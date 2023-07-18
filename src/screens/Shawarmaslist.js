@@ -13,7 +13,7 @@ export default function Shawarmaslist() {
 
   useEffect(() => {
     dispatch(getAllShawarmas());
-  }, []);
+  },[]);
 
   return (
     <div>
@@ -38,8 +38,8 @@ export default function Shawarmaslist() {
                 <tr>
                   <td>{shawarma.name}</td>
                   <td>
-                    Roll : {shawarma.prices[0]["small"]} <br />
-                    Plate: {shawarma.prices[0]["medium"]} 
+                    Roll : {shawarma.prices[0]["roll"]} <br />
+                    Plate: {shawarma.prices[0]["plate"]} 
                     
                   </td>
                   <td>{shawarma.category}</td>
