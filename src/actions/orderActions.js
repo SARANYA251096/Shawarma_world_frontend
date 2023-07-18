@@ -10,7 +10,7 @@ export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
   const userid = _id; // Set the userid field to _id
 
   try {
-    const response = await axios.post("/api/orders/placeorder", {
+    const response = await axios.post(`${config.api}/api/orders/placeorder`, {
       token,
       subtotal,
       currentUser: { userid, name, email, isAdmin }, // Include the userid field
@@ -31,7 +31,7 @@ export const getUserOrders = () => async (dispatch,getState) => {
   dispatch({ type: "GET_USER_ORDERS_REQUEST" });
 
   try {
-    const response = await axios.post("/api/orders/getuserorders",{userid:currentUser._id});
+    const response = await axios.post(`${config.api}/api/orders/getuserorders`,{userid:currentUser._id});
     dispatch({ type: "GET_USER_ORDERS_SUCCESS", payload: response.data });
     console.log(response);
   } catch (error) {
